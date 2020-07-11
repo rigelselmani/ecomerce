@@ -9,7 +9,7 @@ require("dotenv").config();
 // app
 const app = express()
 // import routes
-const router=require("./routes/user");
+const authRoutes=require("./routes/auth");
 //db
 mongoose.connect(process.env.DATABASE, {
     useNewUrlParser:true,
@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(expressValidator());
 // route middleware
-app.use('/api',router);
+app.use('/api',authRoutes);
 
 const port=process.env.PORT ||3000
 
